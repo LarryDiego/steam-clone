@@ -4,11 +4,10 @@ import br.com.larry.games.model.enums.Language;
 
 import java.util.Set;
 
-public record GameDetailCreateRequestDTO(
+public record GameDetailUpdateRequestDTO(
         String description,
         String developer,
         String publisher,
-        Set<Language> supportedLanguages,
-        Long idGame
+        Set<Language> supportedLanguages
 ) {
 }

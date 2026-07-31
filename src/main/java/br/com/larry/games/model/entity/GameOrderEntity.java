@@ -1,6 +1,6 @@
 package br.com.larry.games.model.entity;
 
-import br.com.larry.games.model.enums.OrderStatus;
+import br.com.larry.games.model.enums.GameOrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +32,7 @@ public class GameOrderEntity {
 
     @Column(name = "STATUS", nullable = false)
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private GameOrderStatus status;
 
     @Column(name = "PURCHASE_DATE", nullable = false, updatable = false)
     @CreatedDate

@@ -1,7 +1,6 @@
 package br.com.larry.games.dto.request;
 
-public record UserCreateRequestDTO(
-        String username,
+public record UserUpdateRequestDTO(
         String email,
         String password
 ) {
