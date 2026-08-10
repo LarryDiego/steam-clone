@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity(name = "Category")
 @Table(name = "CATEGORY")
 @NoArgsConstructor
@@ -21,4 +24,8 @@ public class CategoryEntity {
 
     @Column(name = "NAME", unique = true, nullable = false, updatable = false)
     private String name;
+
+    @ManyToMany(mappedBy = "categories")
+    @Builder.Default
+    private Set<GameEntity> games = new HashSet<>();
 }

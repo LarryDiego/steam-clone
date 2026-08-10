@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "Game")
 @Table(name = "GAME")
@@ -33,4 +35,20 @@ public class GameEntity {
 
     @Column(name = "ACTIVE")
     private Boolean active = true;
+
+    @OneToOne
+    @JoinColumn(name = "ID_GAME_DETAIL")
+    private GameDetailEntity gameDetail;
+
+    @ManyToMany(mappedBy = "games")
+    private Set<GameOrderEntity> orders;
+
+    @ManyToMany
+    @JoinTable(
+            name = "GAME_CATEGORY",
+            joinColumns = @JoinColumn(name = "ID_GAME"),
+            inverseJoinColumns = @JoinColumn(name = "ID_CATEGORY")
+    )
+    @Builder.Default
+    private Set<CategoryEntity> categories = new HashSet<>();
 }

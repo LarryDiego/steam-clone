@@ -41,4 +41,7 @@ public class GameDetailEntity {
     @Enumerated(EnumType.STRING)
     @Builder.Default
     private Set<Language> supportedLanguages = new HashSet<>();
+
+    @OneToOne(mappedBy = "gameDetail")
+    private GameEntity game;
 }

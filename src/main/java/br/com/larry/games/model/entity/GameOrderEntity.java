@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity(name = "GameOrder")
 @Table(name = "GAME_ORDER")
@@ -41,4 +42,16 @@ public class GameOrderEntity {
     @Column(name = "UPDATED_AT", nullable = false)
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_USER")
+    private UserEntity user;
+
+    @ManyToMany
+    @JoinTable(
+            name = "GAME_ORDER_ITEM",
+            joinColumns = @JoinColumn(name = "ID_GAME_ORDER"),
+            inverseJoinColumns = @JoinColumn(name = "ID_GAME")
+    )
+    private Set<GameEntity> games;
 }
